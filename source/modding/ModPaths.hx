@@ -10,31 +10,33 @@ class ModPaths {
     static final currentLevel:String = Paths.currentLevel;
 
     private static final SOUND_EXT = Paths.SOUND_EXT;
+    private static final VIDEO_EXT = Paths.VIDEO_EXT;
+    private static final WEBM_EXT = Paths.WEBM_EXT;
 
     inline static public function modIconImage(key:String, mod:String){
-		return getPath('$mod/_polymod_icon.png', IMAGE, mod);
+		return getPath('$mod/_polymod_icon.png', mod);
     }
 
     inline static public function appendTxt(key:String, ?mod:String){
-        return getPath('_append/data/$key.txt',TEXT,mod);
+        return getPath('_append/data/$key.txt',mod);
     }
 
     inline static public function getModTxt(key:String, ?mod:String){
-        return getPath('data/$key.txt',TEXT,mod);
+        return getPath('data/$key.txt',mod);
     }
 
     inline static public function getModXml(key:String, mod:String )
     {
-        return getPath('data/$key.xml', TEXT,mod);
+        return getPath('data/$key.xml', mod);
     }
 
     inline static public function getModJson(key:String, mod:String){
-            return getPath('data/$key.json',TEXT,mod);
+            return getPath('data/$key.json',mod);
     }
     
         static public function getModSound(key:String, mod:String)
 	{
-		return getPath('sounds/$key.$SOUND_EXT', SOUND, mod);
+		return getPath('sounds/$key.$SOUND_EXT', mod);
 	}
 
     inline static public function soundRandom(key:String, min:Int, max:Int, ?mod:String)
@@ -44,19 +46,19 @@ class ModPaths {
 
         inline static public function getModVideo(key:String, mod:String)
 	{
-		trace('mods/$mod/videos/$key.mp4');
-		return getPath('videos/$key.mp4', BINARY, mod);
+		trace('mods/$mod/videos/$key.VIDEO_EXT');
+		return getPath('videos/$key.VIDEO_EXT', mod);
 	}
 
     inline static public function getModWebm(key:String, mod:String)
 	{
-		trace('mods/$mod/videos/$key.webm');
-		return getPath('videos/$key.webm', BINARY, mod);
+		trace('mods/$mod/videos/$key.WEBM_EXT');
+		return getPath('videos/$key.WEBM_EXT', mod);
 	}
 
         inline static public function getModMusic(key:String, mod:String)
 	{
-		return getPath('music/$key.$SOUND_EXT',MUSIC, mod);
+		return getPath('music/$key.$SOUND_EXT', mod);
 	}
 
         inline static public function getModVoices(song:String, mod:String)
@@ -84,37 +86,37 @@ class ModPaths {
 	}
     
         inline static public function getModImage(key:String, mod:String){
-		return getPath('images/$key.png', IMAGE, mod);
+		return getPath('images/$key.png', mod);
 	}
 
         inline static public function getModFont(key:String,mod:String)
 	{
-        return getPath('fonts/$key',BINARY,mod);
+        return getPath('fonts/$key',mod);
 	}
 
     inline static public function getModScripts(key:String, mod:String){
-        return getPath('scripts/$key.lua', TEXT,mod);
+        return getPath('scripts/$key.lua',mod);
     }
 
     inline static public function getModSongScripts(key:String, mod:String){
-        return getPath('data/$key.lua', TEXT,mod);
+        return getPath('data/$key.lua', mod);
     }
 
     inline static public function getModCharjson(key:String, mod:String){
-        return getPath('characters/$key.json', TEXT,mod);
+        return getPath('characters/$key.json', mod);
     }
 
     inline static public function getModLocales(key:String, mod:String)
     {
-        return getPath('locales/$key/languageData.json', TEXT,mod);
+        return getPath('locales/$key/languageData.json', mod);
     }
 
     inline static public function getModCutscenes(key:String, mod:String)
     {
-        return getPath('cutscenes/$key.json', TEXT,mod);
+        return getPath('cutscenes/$key.json', mod);
     }
 
-    static public function getPath(file:String, type:AssetType, ?mod:String)
+    static public function getPath(file:String, ?mod:String)
     {
         var path = "";
         if(mod != null)
@@ -133,11 +135,11 @@ class ModPaths {
 
     inline static public function getSparrowAtlas(key:String, ?mod:String)
     {
-        return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(getModImage(key, mod), getPath('images/$key.xml', TEXT, mod));
+        return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(getModImage(key, mod), getPath('images/$key.xml', mod));
     }
 
     inline static public function getPackerAtlas(key:String, ?mod:String)
     {
-        return FlxAtlasFrames.fromSpriteSheetPacker(getModImage(key, mod), getPath('images/$key.txt', TEXT, mod));
+        return FlxAtlasFrames.fromSpriteSheetPacker(getModImage(key, mod), getPath('images/$key.txt', mod));
     }
 }
